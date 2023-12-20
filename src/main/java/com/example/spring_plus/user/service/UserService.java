@@ -1,6 +1,8 @@
 package com.example.spring_plus.user.service;
 
 
+import com.example.spring_plus.global.exception.CustomException;
+import com.example.spring_plus.global.exception.ErrorCode;
 import com.example.spring_plus.user.dto.SignupRequestDto;
 import com.example.spring_plus.user.entity.User;
 import com.example.spring_plus.user.repository.UserRepository;
@@ -26,16 +28,16 @@ public class UserService {
   }
   public void usernameCheck(String username){
     if (userRepository.findByUsername(username).isPresent()) {
-
+      throw new CustomException(ErrorCode.ALREADY_EXIST_USER_NAME_EXCEPTION);
     }
   }
 
   public void passwordCheck(SignupRequestDto requestDto) {
     if (!(requestDto.password().equals(requestDto.passwordAgain()))) {
-
+      throw new CustomException(ErrorCode.WRONG_PASSWORD_EXCEPTION);
     }
     if (requestDto.password().contains(requestDto.username())) {
-
+      throw new CustomException(ErrorCode.INVALID_PASSWORD_EXCEPTION);
     }
   }
 
