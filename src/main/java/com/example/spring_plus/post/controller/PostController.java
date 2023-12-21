@@ -8,6 +8,7 @@ import com.example.spring_plus.post.dto.UpdatePostDto;
 import com.example.spring_plus.post.service.PostService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/api/posts")
@@ -44,6 +46,18 @@ public class PostController {
     GetResponsePostDto responsePostDto = postService.getIdCard(id);
 
     return ResponseEntity.ok(responsePostDto);
+  }
+
+  @GetMapping("/paging")
+  public ResponseEntity<Page<GetResponsePostDto>> getPostPage(
+      @RequestParam("page") int page,
+      @RequestParam("size") int size,
+      @RequestParam("sortBy") String sortBy,
+      @RequestParam("isAsc") boolean isAsc) {
+
+    Page<GetResponsePostDto> responsePostDtoPage = postService.getPostPage(page-1,size,sortBy,isAsc);
+
+    return ResponseEntity.ok(responsePostDtoPage);
   }
 
   @GetMapping()
