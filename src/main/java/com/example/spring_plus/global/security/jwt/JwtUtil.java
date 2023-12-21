@@ -30,8 +30,8 @@ public class JwtUtil {
     //어떤값앞에 Bearer이라 붙어 있으면 해당하는 그 값은 토큰이라 알려주는거다. VALUE값인 토큰 앞에 Bearer붙여주는데 한칸뛴다.(공백)
     public static final String BEARER_PREFIX = "Bearer ";
 
-    // 토큰 만료시간 10분
-    private final long TOKEN_TIME = 60 * 60 * 1000L;
+
+    private final long TOKEN_TIME = 60 * 180 * 1000L;
 
     @Value("${jwt.secret.key}")
     private String secretKey;
