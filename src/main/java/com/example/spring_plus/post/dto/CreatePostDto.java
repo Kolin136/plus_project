@@ -9,8 +9,10 @@ import lombok.Builder;
 public class CreatePostDto {
 
   public record Request(
-      @NotBlank String title,
-      @NotBlank String contents) {
+      @NotBlank(message = "제목 공백일 수 없습니다.")
+      String title,
+      @NotBlank(message = "내용 공백일 수 없습니다.")
+      String contents) {
 
     public Post toEntity(User user) {
       return Post.builder()
