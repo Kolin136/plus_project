@@ -8,11 +8,12 @@ import lombok.Builder;
 public class UpdatePostDto {
 
   public record Request(
-      @NotBlank String title,
-      @NotBlank String contents) {
+      @NotBlank(message = "제목 공백일 수 없습니다.")
+      String title,
+      @NotBlank(message = "내용 공백일 수 없습니다.")
+      String contents) {
 
   }
-
 
   @Builder
   public record Response(
