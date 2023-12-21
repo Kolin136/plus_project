@@ -84,6 +84,7 @@ public class PostService {
             throw new CustomException(ErrorCode.NOT_USER_OWNED_POST_EXCEPTION);
         }
 
+        postRepository.deletePostCascadeComments(post.getId());
         postRepository.delete(post);
 
     }
