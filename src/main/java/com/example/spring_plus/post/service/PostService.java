@@ -1,6 +1,7 @@
 package com.example.spring_plus.post.service;
 
 
+import com.example.spring_plus.comment.repository.CommentRepository;
 import com.example.spring_plus.global.exception.CustomException;
 import com.example.spring_plus.global.exception.ErrorCode;
 import com.example.spring_plus.post.dto.CreatePostDto;
@@ -28,6 +29,7 @@ public class PostService {
 
     private final PostRepository postRepository;
     private final UserRepository userRepository;
+    private final CommentRepository commentRepository;
 
     public CreatePostDto.Response createPost(CreatePostDto.Request requestDto, Long userId) {
         User user = userRepository.findById(userId).orElseThrow(() ->
@@ -84,7 +86,7 @@ public class PostService {
             throw new CustomException(ErrorCode.NOT_USER_OWNED_POST_EXCEPTION);
         }
 
-        postRepository.deletePostCascadeComments(post.getId());
+        commentRepository.deletePostCascadeComments(post.getId());
         postRepository.delete(post);
 
     }
