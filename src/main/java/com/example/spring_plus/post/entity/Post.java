@@ -1,6 +1,7 @@
 package com.example.spring_plus.post.entity;
 
 import com.example.spring_plus.comment.entity.Comment;
+import com.example.spring_plus.file.entity.PostFile;
 import com.example.spring_plus.global.auditing.Timestamped;
 import com.example.spring_plus.user.entity.User;
 import jakarta.persistence.Column;
@@ -44,6 +45,11 @@ public class Post extends Timestamped {
 
     @OneToMany(mappedBy = "post")
     private Set<Comment> commentSet = new HashSet<>();
+
+    @OneToMany(mappedBy = "post")
+    private Set<PostFile> postFileSet = new HashSet<>();
+
+
 
     public void updatePost(String title,String contents) {
         this.title = title;

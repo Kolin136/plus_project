@@ -7,6 +7,7 @@ public enum ErrorCode {
   // 공통
   INVALID_INPUT_EXCEPTION(400,"잘못된 입력 입니다!, 다시 입력해주세요"),
   DAILY_REQUEST_LIMIT_EXCEEDED(429,"일일 사용 횟수 초과 했습니다"),
+  INTERNAL_ERROR(500,"시스템에 오류가 있습니다."),
 
   // 게시글
   NOT_FOUND_POST_EXCEPTION(400,"해당 글은 없습니다"),
