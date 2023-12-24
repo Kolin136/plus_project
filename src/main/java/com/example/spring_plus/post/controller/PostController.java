@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @RequestMapping("/api/posts")
 @RestController
@@ -30,10 +32,12 @@ public class PostController {
 
 
   @PostMapping()
-  public ResponseEntity<CreatePostDto.Response> createPost(@RequestBody CreatePostDto.Request requestDto,
+  public ResponseEntity<CreatePostDto.Response> createPost(
+      @RequestPart(value ="dto") CreatePostDto.Request requestDto,
+      @RequestPart(value = "files")  List<MultipartFile> files,
       @AuthenticationPrincipal UserDetailsImpl userDetails) {
 
-    CreatePostDto.Response responseDto = postService.createPost(requestDto,
+    CreatePostDto.Response responseDto = postService.createPost(requestDto,files,
         userDetails.getUser().getId());
 
     return ResponseEntity.ok(responseDto);

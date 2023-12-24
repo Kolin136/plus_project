@@ -4,6 +4,7 @@ import com.example.spring_plus.post.entity.Post;
 import com.example.spring_plus.user.entity.User;
 import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.List;
 import lombok.Builder;
 
 public class CreatePostDto {
@@ -25,15 +26,17 @@ public class CreatePostDto {
   }
   @Builder
   public record Response(
-       Long id, String username, String title, String contents, LocalDateTime createAt){
+      Long id, String username, String title, String contents,
+      LocalDateTime createAt, List<String> fileUrlList){
 
-      public static Response of(Post post){
+      public static Response of(Post post,List<String> fileUrlList){
         return Response.builder()
             .id(post.getId())
             .username(post.getUser().getUsername())
             .title(post.getTitle())
             .contents(post.getContents())
             .createAt(post.getCreateAt())
+            .fileUrlList(fileUrlList)
             .build();
       }
   }
