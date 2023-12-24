@@ -1,6 +1,8 @@
 # Plus_Project
-테스트 할시 
-application.yml보고 환경변수 설정
+테스트 할시
+application.yml보고 환경변수 설정 
+(FILE_DIR의 환경변수 값은 프로젝트의 src/main/java/com/example/spring_plus/file/images/ 에 images패키지 절대 경로 복사)
+ 
 # 복습 과제
 - 💬  12/12 - 회원 가입 API
     - [x]  닉네임, 비밀번호, 비밀번호 확인을 **request**에서 전달받기
