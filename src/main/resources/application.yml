@@ -20,4 +20,4 @@ jwt:
 
 
 file:
-  upload-dir: "C:/Sparta_camp/First_Spring/Spring_Plus/src/main/java/com/example/spring_plus/file/images/"
+  upload-dir: ${FILE_DIR}
