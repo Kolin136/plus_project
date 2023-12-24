@@ -1,6 +1,6 @@
 # Plus_Project
 테스트 할시
-application.yml보고 환경변수 설정 
+application.yml보고 환경변수 설정 </br>
 (FILE_DIR의 환경변수 값은 프로젝트의 src/main/java/com/example/spring_plus/file/images/ 에 images패키지 절대 경로 복사)
  
 # 복습 과제
