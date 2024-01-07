@@ -54,4 +54,4 @@ application.yml보고 환경변수 설정 </br>
         - [ ]  (챌린지 과제) 게시글이 삭제될 때 연관된 댓글도 같이 지우도록 스케줄러 코드 기능 추가
 
 # 심화 과제
-12/13 - CustomException 정의 및 SpringAOP 적용
+12/13 - CustomException 정의 및 SpringAOP 적용 (AOP:게시글 쓰기or댓글 쓰기 동일 ip 횟수 제한)
