@@ -4,8 +4,8 @@ package com.example.spring_plus.global.aop;
 import com.example.spring_plus.global.exception.CustomException;
 import com.example.spring_plus.global.exception.ErrorCode;
 import jakarta.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -27,7 +27,7 @@ public class UseLimitAop {
   private void comment() {}
 
 
-  private  Map<String, Integer> requestCount = new HashMap<>();
+  private  Map<String, Integer> requestCount = new ConcurrentHashMap<>();
 
   @Before("post() || comment()")
   public void limitRequest(JoinPoint joinPoint) {
@@ -42,7 +42,7 @@ public class UseLimitAop {
     requestCount.put(clientIp, count + 1);
   }
 
-  public static String getIPaddress(HttpServletRequest req){
+  private  static String getIPaddress(HttpServletRequest req){
 
     String clientIp = req.getHeader("X-Forwarded-For");
 
