@@ -34,7 +34,7 @@ public class UseLimitAop {
     HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
     String clientIp = getIPaddress(request);
 
-    log.info(joinPoint.getSignature().getName());
+
     int count = requestCount.getOrDefault(clientIp, 0);
     if (count > 2) {
       throw new CustomException(ErrorCode.DAILY_REQUEST_LIMIT_EXCEEDED);
